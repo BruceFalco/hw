@@ -15,36 +15,26 @@ public class Shapes {
 	return s;
     }
     public String tri1(int h) {
-	int len = 1;
 	String ret = "";
-	while (len < h) {
-	    int g = 0;
-	    while (g < len) {
+	for (int len=1 ;len < h; len++) {
+	    for  (int g=0; g < len; g++) {
 		ret = ret + "*";
-		g ++;
 	    }
 	ret = ret + "\n";
-	len ++;
 	    }
 	return ret;
     }
 
     public String tri2(int h) {
 	int spaces  = h - 1;
-	int nline = 1;
 	String ret = "";
-	while (nline < h) {
-	    int g = spaces;
-	    while (g > 0) {
+	for (int nline=1; nline < h; nline++) {
+	    for (int g = spaces ; g > 0 ; g = g-1) {
 		ret = ret + " ";
-		g = g - 1;
 	    }
-	    int c  = 0;
-	    while (c < nline) {
+	    for (int c = 0 ;c < nline ; c++) {
 		ret = ret + "*";
-		c ++;
 	    }
-	    nline ++;
 	    spaces = spaces - 1;
 	    ret = ret + "\n";
 	}
