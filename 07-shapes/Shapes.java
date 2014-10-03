@@ -40,4 +40,52 @@ public class Shapes {
 	}
 	return ret;
     }
+    //taken from Aaron Jay to get sleep; will redo tomorrow
+    public String tri3 (int h){
+	String out = "";
+	for (int r = 0; r < h; r++){ //row counter
+	    for (int s = h-r; s > 1; s--){//space counter
+		out = out + " ";
+	    }
+	    for (int x = 2 * r + 1; x > 0; x--){//asterisk counter
+		out = out + "*";
+	    }
+	    out += "\n";
+	}
+	return out;
+    } 
+
+    public String tri3reverse (int h){
+	String out = "";
+	for (int r = h-1; r >= 0; r--){ //row counter
+	    for (int s = h-r; s > 0; s--){//space counter
+		out = out + " ";
+	    }
+	    for (int x = 2 * r + 1; x > 0; x--){//asterisk counter
+		out = out + "*";
+	    }
+	    out += "\n";
+	}
+	return out;
+    }
+
+    public String diamond (int h){
+	int r = h/2; 
+	return tri3(r+1) + tri3reverse(r);
+    }
+
+    
+    public String tri4 (int h) {
+	String out = "";
+	for (int c = 0; c < h; c ++){
+	    for (int s = h; s > (h - c); s--) {
+		out = out + " ";
+	    }
+	    for (int x = h; x > c; x--) {
+		out = out + "*";
+	    }
+	    out = out + "\n";
+	}
+	return out;
+    }
 }
