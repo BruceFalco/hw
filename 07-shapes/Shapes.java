@@ -88,4 +88,23 @@ public class Shapes {
 	}
 	return out;
     }
+    // original stuff
+    private String framehelp(String ret,int c,String stuf ) {
+	for (int star = 0; star < c; star++) {
+	    ret = ret + stuf;
+	}
+	return ret;
+    }
+    public String frame(int r, int c) {
+	String ret = "";
+	ret = framehelp(ret,c,"*");
+	ret = ret + "\n";
+	for (int row = 0; row < r-2; row++) {
+	    ret = ret + "*";
+	    ret = framehelp(ret,c-2," ");
+	    ret = ret + "*\n";
+	}
+	ret = framehelp(ret,c,"*");
+	return ret;
+    }
 }
