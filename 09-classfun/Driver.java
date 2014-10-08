@@ -1,26 +1,40 @@
 public class Driver {
     public static void main(String[] args){
+	Basechar c = new Basechar();
+	Warrior w = new Warrior();
+	Mage m = new Mage();
+	Basechar c2;
+	Warrior w2;
+	Mage m2;
+	
+	// nope w2 = m;
+	// nope w2 = m;
 
-	Basechar b1,b2;
-	Warrior w1,w2;
-	Mage m1,m2;
+	//this works -- note that c2.getHealth() calls getHealth in the
+	// warrior subclass
+	c2 = w;
+	System.out.println(c2.getHealth());
+	
+	/* a variable of a superclass can refer (point to, be assigned to)
+	   an instance of a subclass
+	   a variable of a subclass can't point to an instance of its superclass
+	*/
 
-	b1 = new Basechar();
-	w1 = new Warrior();
-	m1 = new Mage();
+	c2 = m;
+	System.out.println(c2.getHealth());
+	System.out.println(((Mage)c2).getManna() );
 
-	m2 = m1;
-	//	m2 = b1;
-	//	m2 = c1;
+	System.out.println("-------------");
+	
+	m.setName("Grif");
+	w2 = new Warrior();
+	w2.setName("Church");
+	w.setName("Sarge");
 
-	b2 = m1;
-	//	System.out.println(b2.getManna());
-	b2 = m2;
-	// System.out.println(b2.getManna());
-	// (doesn't work for some reason)
-	b2 = new Warrior();
-
-
+	w.attack(m);
+	m.attack(w);
+	w2.attack(w);
+	
     }
 
 }
