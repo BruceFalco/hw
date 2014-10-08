@@ -1,0 +1,6 @@
+/* subclass of Basechar */
+public Warrior extends Basechar {
+    public int warriorGetHealth() {
+	return health;
+    }
+}
