@@ -1,6 +1,6 @@
 public class Driver {
     public static void main(String[] args){
-	Basechar c = new Basechar();
+	/* Basechar c = new Basechar();
 	Warrior w = new Warrior();
 	Mage m = new Mage();
 	Basechar c2;
@@ -20,7 +20,7 @@ public class Driver {
 	   a variable of a subclass can't point to an instance of its superclass
 	*/
 
-	c2 = m;
+	/*	c2 = m;
 
 
 	System.out.println("-------------");
@@ -44,13 +44,12 @@ public class Driver {
 	ichi.attack(nii);
 	*/
 
-	Mage magi1 = new Mage("Cavaliere",9000);
-	Mage magi2 = new Mage();
-	System.out.println(magi1.getName());
-	System.out.println(magi1.getManna());
-	System.out.println(magi2.getName());
-	System.out.println(magi2.getManna());
-
+	Warrior war1 = new Warrior("Superman");
+	System.out.println(war1.getName());
+	war1.setName("Groon");
+	System.out.println(war1.getName());
+	Warrior war2 = new Warrior();
+	System.out.println(war2.getName());
 
     }
 

@@ -5,5 +5,10 @@ public class Warrior extends Basechar {
     public int getHealth() {
 	return healthboost + super.getHealth();
     }
-    
+    public Warrior(String name) {
+	super(name);
+    }
+    public Warrior() {
+	super();
+    }
 }

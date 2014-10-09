@@ -3,15 +3,15 @@ public class Basechar {
     private int health=20;
     private String name;
 
-    /*constructors -- functioning
+    //constructors -- functioning
 
     public Basechar(String name) {
-	this.name = name;
+	setName(name);
     }
     public Basechar() {
 	this.name = "Joanna";
     }
-    // constructors end */
+    // constructors end
 
     public void attack(Basechar other) {
 	System.out.println(this.name+" is attacking "+other.name);
