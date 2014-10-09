@@ -19,5 +19,5 @@ public class Mage extends Basechar{
     //     public String getName() {
     // System.out.println(this.name);
     // (does not work)
-    //    }
+    }
 }

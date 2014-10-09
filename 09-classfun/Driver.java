@@ -21,8 +21,7 @@ public class Driver {
 	*/
 
 	c2 = m;
-	System.out.println(c2.getHealth());
-	System.out.println(((Mage)c2).getManna() );
+
 
 	System.out.println("-------------");
 	
@@ -34,7 +33,25 @@ public class Driver {
 	w.attack(m);
 	m.attack(w);
 	w2.attack(w);
-	
+
+        System.out.println("-------------");
+
+	//oct 8 homework stuff -- constructor tests -- works
+	/*	Basechar ichi = new Basechar("Zatoichi");
+	Basechar nii = new Basechar();
+	System.out.println(ichi.getName());
+	System.out.println(nii.getName());
+	ichi.attack(nii);
+	*/
+
+	Mage magi1 = new Mage("Cavaliere",9000);
+	Mage magi2 = new Mage();
+	System.out.println(magi1.getName());
+	System.out.println(magi1.getManna());
+	System.out.println(magi2.getName());
+	System.out.println(magi2.getManna());
+
+
     }
 
 }
