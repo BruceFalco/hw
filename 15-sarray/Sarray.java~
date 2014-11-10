@@ -15,7 +15,6 @@ public class Sarray {
             }
             data = new_data;
 	}
-	return data;
     }
 
     public boolean add(int i){
