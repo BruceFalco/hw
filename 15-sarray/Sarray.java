@@ -25,6 +25,8 @@ public class Sarray {
 	return true;
     }
 
+
+
     public void  add(int index, int i){
 	data = copyover();
 	for (int x=last;x>=index;x--) {
@@ -34,10 +36,14 @@ public class Sarray {
 	last++;
     }
 
+
+
+
     public int size() {
 	return last+1;
     }
 
+   
     public int get(int index) {
 	if (index>last) {
 	    return -1;
@@ -46,6 +52,10 @@ public class Sarray {
 	}
     }
 
+
+
+
+  
     public int set(int index, int i){
 	if (index>last) {
 	    return -1;
@@ -55,7 +65,9 @@ public class Sarray {
 	    return old;
           }
     }
-
+ 
+    
+   
     public int remove(int index){
 	int old = data[index];
 	for (int i = 0; i<last; i++) {
@@ -64,5 +76,4 @@ public class Sarray {
 	last--;
 	return old;
     }
-
 }
