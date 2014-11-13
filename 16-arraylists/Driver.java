@@ -31,6 +31,6 @@ public class Driver{
 	}
 	
 	System.out.println(ai);
-	
+	//usually gonna use .compareTo and .equals with arraylists
     }
 }
