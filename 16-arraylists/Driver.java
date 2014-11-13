@@ -21,12 +21,16 @@ public class Driver{
 	}
 	System.out.println(ai);
 
-	
-	for (int i = 0; i<ai.length; i++) {
-	    if (i == i-1) {
+
+	for (int i = 0; i<ai.size(); ) {
+	    if (ai.get(i) == ai.get(i-1)) {
 		ai.remove(i);
+	    } else {
+		i++;
 	    }
 	}
-
+	
+	System.out.println(ai);
+	
     }
 }
