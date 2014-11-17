@@ -15,16 +15,24 @@ public class Driver {
 
 	Random r = new Random();
 
+	/*
 	ArrayList<Integer> ai = new ArrayList<Integer> ();
 
 	while (! al.isEmpty()) {
 	    int oldn = r.nextInt(al.size());
 	    ai.add(al.get(oldn));
 	    al.remove(al.get(oldn));
+	}*/
+	for (int s=al.size(); s > 0; s--) {
+	    int i = r.nextInt(al.size());
+	    int temp = al.get(s-1);
+	    al.set(s-1,al.get(i));
+	    al.set(i,temp);
 	}
 
-	System.out.println(ai);
-	
+	System.out.println(al);
+       
+
 	//------
 	//now for arrays
 	int[] rent = new int[10];
@@ -45,7 +53,16 @@ public class Driver {
 	rent = grease;
 	
 	System.out.println(Arrays.toString(rent));
-	    
 	
+	//hidden complexity
+	/*
+	  > another way to do it
+	  s=l.size();
+	  1. generate random index between 0 and s
+	  2. swap item at i with item at s-1
+	  3. 
+	  4. subtract 1 from s
+	  5. go back to step 1 until done
+	 */	
     }
 }
