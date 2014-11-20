@@ -38,17 +38,20 @@ public class WordSearch {
 	for (int i = 0; i < w.length(); i++) {
 	    board[row][c] = w.charAt(i);
 
-	    if (dir.equals("n")) {
+	    if (dir.equals("n") && row-w.length() >=  0  ) {
 		row= north(row,c);
 	    }
-	    if (dir.equals("s")) {
+	    else if (dir.equals("s") && row+w.length() <= board.length ) {
 		row= south(row,c);
 	    }
-	    if (dir.equals("w")) {
+	    else if (dir.equals("w") && c-w.length() >= 0 ) {
 		c= west(row,c);
 	    }
-	    if (dir.equals("e")) {
+	    else if (dir.equals("e") && c+w.length() <= board[row].length ) {
 		c = east(row,c);
+	    }
+	    else {
+		break;
 	    }
 	}
     }
@@ -73,7 +76,7 @@ public class WordSearch {
 
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
-	System.out.println(w);
+	//	System.out.println(w);
 	w.addWord("hello",8,10,"s"); // should work
 	//w.addWordH("look",3,14); // test illegal overlap
 	//w.addWordH("look",3,18); // test legal overlap
