@@ -37,6 +37,11 @@ public class WordSearch {
     public void addWord(String w, int row, int c, String dir) {
 	for (int i = 0; i < w.length(); i++) {
 	    board[row][c] = w.charAt(i);
+	    if (board[row][c] == '.' || board[row][c]==(w.charAt(i)) ) {
+		board[row][c] = w.charAt(i);
+	    } else {
+		break;
+	    }
 
 	    if (dir.equals("n") && row-w.length() >=  0  ) {
 		row= north(row,c);
@@ -78,6 +83,16 @@ public class WordSearch {
 	WordSearch w = new WordSearch();
 	//	System.out.println(w);
 	w.addWord("hello",8,10,"s"); // should work
+	System.out.println(w);
+	//w.addWord("savior",40,10,"e"); // should not work
+	System.out.println(w);
+	w.addWord("frith",10,10,"n"); // should work
+	System.out.println(w);
+	w.addWord("comity",7,8,"w"); // should work
+	System.out.println(w);
+
+
+
 	//w.addWordH("look",3,14); // test illegal overlap
 	//w.addWordH("look",3,18); // test legal overlap
 	//w.addWordH("look",-3,20); // test illegal row
