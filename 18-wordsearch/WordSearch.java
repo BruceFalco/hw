@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class WordSearch {
     private char[][] board;
 
@@ -9,6 +11,7 @@ public class WordSearch {
 	    }
 	}
     }
+
     public WordSearch() {
 	this(20,40);
     }
@@ -34,33 +37,106 @@ public class WordSearch {
     // sw row++ c--
     // se row++ c++
 
-    public void addWord(String w, int row, int c, String dir) {
-	for (int i = 0; i < w.length(); i++) {
-	    board[row][c] = w.charAt(i);
-	    if (board[row][c] == '.' || board[row][c]==(w.charAt(i)) ) {
-		board[row][c] = w.charAt(i);
-	    } else {
-		break;
-	    }
+    public boolean inBound(String w, int row, int c, String dir) {
+	if (row < 0 || row > board.length || c < 0 || c > board[0].length) {
+	    return false;
+	}
+	else if (dir.equals("n")) {
+	    return (row-w.length() >= 0);
+	}
+	else if (dir.equals("s")) {
+	    return (row+w.length() <= board.length);
+	}
+	else if (dir.equals("w")) {
+	    return (c-w.length() >= 0);
+	}
+	else if (dir.equals("e")) {
+	    return (c+w.length() <= board[0].length);
+	}
+	else {
+	    return false;
+	}
+    }
+	
 
-	    if (dir.equals("n") && row-w.length() >=  0  ) {
-		row= north(row,c);
+    public boolean NOverlap(String w, int row, int c, String dir) {
+	for (int i = 0; i < w.length(); i++) {
+	    char ima = board[row][c];
+	    if (ima != '.' && ima != w.charAt(i)) {
+		return false;
 	    }
-	    else if (dir.equals("s") && row+w.length() <= board.length ) {
-		row= south(row,c);
+	    if (dir.equals("n") || (dir.equals("nw")) || dir.equals("ne")) {
+		row--;
 	    }
-	    else if (dir.equals("w") && c-w.length() >= 0 ) {
-		c= west(row,c);
+	    if (dir.equals("s") || dir.equals("sw") || dir.equals("se")) {
+		row++;
 	    }
-	    else if (dir.equals("e") && c+w.length() <= board[row].length ) {
-		c = east(row,c);
+	    if (dir.equals("w") || dir.equals("sw") || dir.equals("nw")) {
+		c--;
 	    }
-	    else {
-		break;
+	    if (dir.equals("e") || dir.equals("se") || dir.equals("ne")) {
+		c++;
 	    }
+	}
+	return true;
+    }
+
+    public boolean Adder(String w, int row, int c, String dir) {
+	if (!(NOverlap(w,row,c,dir) && inBound(w,row,c,dir))) {
+	    return false;
+	}
+	for (int i = 0; i< w.length(); i++) {
+	    board[row][c] = w.charAt(i);
+	    if (dir.equals("n") || (dir.equals("nw")) || dir.equals("ne")) {
+                row--;
+            }
+            if (dir.equals("s") || dir.equals("sw") || dir.equals("se")) {
+                row++;
+            }
+            if (dir.equals("w") || dir.equals("sw") || dir.equals("nw")) {
+                c--;
+            }
+            if (dir.equals("e") || dir.equals("se") || dir.equals("ne")) {
+                c++;
+	    } 
+	}
+	return true;
+    }
+    
+    public String addWord(String w, int row, int c, String dir) {
+	Adder(w,row,c,dir);
+	if (Adder(w,row,c,dir)) {
+	    return "Word added successfully.";
+	} else {
+	    return "Word not added.";
+	}
+    }
+
+    public void  addWord(String w) {
+	Random r = new Random();
+	int row, c;
+	row = r.nextInt(board.length);
+	c = r.nextInt(board[0].length);
+	String[] direc = {
+	    "n","s","e","e",
+	    "nw","sw","ne","se"
+	};
+	String dir = direc[r.nextInt(direc.length)];
+	boolean well = Adder(w,row,c,dir);
+	while (well == false) {
+	    row = r.nextInt(board.length);
+	    c = r.nextInt(board[0].length);
+	    dir = direc[r.nextInt(direc.length)];
+	    well = Adder(w,row,c,dir);
 	}
     }
     
+    public void addWord(String[] ws) {
+	for (i = 0; i < ws.length; i++) {
+	    addWord(ws[i]);
+	}
+    }
+
     private int north(int row, int c) {
 	row--;
 	return row;
@@ -82,22 +158,8 @@ public class WordSearch {
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
 	//	System.out.println(w);
-	w.addWord("hello",8,10,"s"); // should work
-	System.out.println(w);
-	//w.addWord("savior",40,10,"e"); // should not work
-	System.out.println(w);
-	w.addWord("frith",10,10,"n"); // should work
-	System.out.println(w);
-	w.addWord("comity",7,8,"w"); // should work
-	System.out.println(w);
+	addWord(["comity","hello","hail","integrity","virtue","basque","industry","honor","being","god","faith","courage","love","loyalty"]);
 
-
-
-	//w.addWordH("look",3,14); // test illegal overlap
-	//w.addWordH("look",3,18); // test legal overlap
-	//w.addWordH("look",-3,20); // test illegal row
-	//w.addWordH("look",3,55); // test illegal col
-	// etc
 	System.out.println(w);
     }
 }
