@@ -2,6 +2,8 @@ import java.util.*;
 
 public class WordSearch {
     private char[][] board;
+    Random r = new Random();
+    String[] wordlist;
 
     public WordSearch(int r, int c) {
 	board = new char[r][c];
@@ -112,8 +114,7 @@ public class WordSearch {
 	}
     }
 
-    public void  addWord(String w) {
-	Random r = new Random();
+    public  void  addWord(String w) {
 	int row, c;
 	row = r.nextInt(board.length);
 	c = r.nextInt(board[0].length);
@@ -132,7 +133,7 @@ public class WordSearch {
     }
     
     public void addWord(String[] ws) {
-	for (i = 0; i < ws.length; i++) {
+	for (int i = 0; i < ws.length; i++) {
 	    addWord(ws[i]);
 	}
     }
@@ -154,12 +155,29 @@ public class WordSearch {
 	return c;
     }
     
+    public void buildPuzzle(int numwords) {
+	words = new ArrayList<String>();
+	int i = 0;
+	while (i<numwords) {
+	    int wordIndex = rnd.nextInt(wordlist.size());
+	    String word = wordlist.get(wordIndex);
+	    if (addWord(word)) {
+		words.add(word);
+		wordlist.remove(wordIndex);
+		    i++;
+	    }
+	}
+    }
 
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
 	//	System.out.println(w);
-	addWord(["comity","hello","hail","integrity","virtue","basque","industry","honor","being","god","faith","courage","love","loyalty"]);
-
-	System.out.println(w);
+	String[] vocab = {
+	    "comity","hello","hail","integrity","virtue",
+	    "basque","industry","honor","being","god","faith",
+	    "courage","love","loyalty"};
+	
+	addWord("honor");
+	System.out.println(w.toString());
     }
 }
