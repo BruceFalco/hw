@@ -19,21 +19,21 @@ public class Sarray {
 	return data;
     }
 
-    public boolean add(String i){
+    public boolean add(String h){
 	data = copyover();
-	data[last+1] = i;
+	data[last+1] = h;
 	last++;
 	return true;
     }
 
 
 
-    public void  add(int index, int i){
+    public void  add(int index, String h){
 	data = copyover();
 	for (int x=last;x>=index;x--) {
 	    data[x+1]=data[x];
 	}
-	data[i] = get(i);
+	data[index] = h;
 	last++;
     }
 
@@ -45,11 +45,11 @@ public class Sarray {
     }
 
    
-    public int get(int index) {
-	if (index>last) {
-	    return -1;
-	} else {
+    public String  get(int index) {
+	if (index <= last) {
 	    return data[index];
+	} else {
+	    return "";
 	}
     }
 
@@ -57,11 +57,11 @@ public class Sarray {
 
 
   
-    public int set(int index, int i){
+    public String set(int index, String i){
 	if (index>last) {
-	    return -1;
+	    return "not found";
 	} else {
-	    int old = data[index];
+	    String  old = data[index];
 	    data[index] = i;
 	    return old;
 	}
@@ -69,8 +69,8 @@ public class Sarray {
  
     
    
-    public int remove(int index){
-	int old = data[index];
+    public String remove(int index){
+	String  old = data[index];
 	for (int i = 0; i<last; i++) {
 	    data[i]=data[i+1];
 	}
