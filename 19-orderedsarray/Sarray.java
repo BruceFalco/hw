@@ -59,7 +59,7 @@ public class Sarray {
   
     public String set(int index, String i){
 	if (index>last) {
-	    return "not found";
+	    return "";
 	} else {
 	    String  old = data[index];
 	    data[index] = i;

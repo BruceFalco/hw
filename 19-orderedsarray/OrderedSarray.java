@@ -20,8 +20,29 @@ public class OrderedSarray extends Sarray {
 	}
 	data[ere] = h;
       	last++;
-	return true;
+ 	return true;
     }
 	
+    public void reorder() {
+	String[] neu = new String[data.length];
+	int x = 0;
+	// index of most first String in terms of ABC order
+	for (int i = 1; i < last; i++) {
+	    if (get(i).compareTo(x) < 0) {
+		x = i;
+	    }
+	}
+	//to be continued; needs nested for loop, prolly	
+
+    }
+		
+
+
+    public String set(int index, String i) {
+	if (index > last) {
+	    return "";
+	} else {
+	    String old = data[index];
+	    data[index] = i;
 
 }
