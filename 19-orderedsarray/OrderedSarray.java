@@ -4,7 +4,7 @@ public class OrderedSarray extends Sarray {
 	return h.compareTo(get(i));
     }*/
 
-    public boolean add(String h) {
+    /*    public boolean add(String h) {
 	data = copyover();
 	int ere = -1;
 	for (int i = 0; i < last; i++) {
@@ -12,6 +12,7 @@ public class OrderedSarray extends Sarray {
 		ere = i;
 	    }
 	}
+	//place to put 
 	if (ere == -1) {
 	    ere = last;
 	}
@@ -21,7 +22,7 @@ public class OrderedSarray extends Sarray {
 	data[ere] = h;
       	last++;
  	return true;
-    }
+    } 
 	
     public void reorder() {
 	String[] neu = new String[data.length];
@@ -36,7 +37,7 @@ public class OrderedSarray extends Sarray {
 
     }
 		
-
+    */
 
     public String set(int index, String i) {
 	if (index > last) {
@@ -44,5 +45,21 @@ public class OrderedSarray extends Sarray {
 	} else {
 	    String old = data[index];
 	    data[index] = i;
+	    return old;
+	}
+    }
+
+    public boolean add(String h) {
+	//	int last;
+	//	last = data.length-1;
+	int i;
+	for (i = last; i>0 &&  data[i-1].compareTo(h) > 0 ; i--) {
+	    data[i] = data[i-1];
+	    // got from Mr. Z
+	}
+	data[i] = h;
+	return true;
+    }
+
 
 }
