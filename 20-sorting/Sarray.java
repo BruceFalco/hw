@@ -77,4 +77,20 @@ public class Sarray {
 	last--;
 	return old;
     }
+
+
+
+    public void isort() {	   
+	for (int i = 0; i < last; i++) {
+	    String newal = data[i];
+	    int x;
+	    for (x = last; x > 0 && newal.compareTo(data[x-1]) < 0; x--) {
+		data[x] = data[x-1];
+	    }
+	    data[x] = newal;
+	    
+	}
+
+    }
+
 }
