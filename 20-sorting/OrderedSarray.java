@@ -10,7 +10,7 @@ public class OrderedSarray extends Sarray {
 	}
     }
 
-    public boolean add(String h) {
+    public void add(String h) {
 	//	int last;
 	//	last = data.length-1;
 	int i;
@@ -19,6 +19,6 @@ public class OrderedSarray extends Sarray {
 	    // got from Mr. Z
 	}
 	data[i] = h;
-	return true;
+
     }
 }

@@ -8,28 +8,28 @@ public class Sarray {
 	String[] data = new String[100];
     }
 
-    public String[] copyover() {
-        if (data.length > last+1) {
-            String[] new_data = new String[data.length+100];
+    public void  copyover() {
+	String[] new_data;
+        if (data.length < last+1) {
+            new_data = new String[data.length+100];
             for(int i = 0; i<data.length;i++) {
 		new_data[i] = data[i];
             }
             data = new_data;
 	}
-	return data;
     }
 
-    public boolean add(String h){
-	data = copyover();
+    public void add(String h){
+	copyover();
 	data[last+1] = h;
 	last++;
-	return true;
+
     }
 
 
 
     public void  add(int index, String h){
-	data = copyover();
+	copyover();
 	for (int x=last;x>=index;x--) {
 	    data[x+1]=data[x];
 	}
