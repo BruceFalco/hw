@@ -87,10 +87,26 @@ public class Sarray {
 	    for (x = last; x > 0 && newal.compareTo(data[x-1]) < 0; x--) {
 		data[x] = data[x-1];
 	    }
-	    data[x] = newal;
-	    
+	    data[x] = newal;   
 	}
-
     }
+
+    public void ssort() {
+	for (int i = 0; i < last; i++) {
+	    int  min = i;
+	    for (int x = i; x < last; x++) {
+		if (data[min].compareTo(data[x+1]) > 0) {
+		    min = x+1;
+		}
+	    }
+	    String neu = data[min];
+	    data[min] = data[i];
+	    data[i] = neu;
+	}
+    }
+    /*
+    public void bsort() {
+	for (int i = 0; */
+
 
 }
