@@ -104,9 +104,18 @@ public class Sarray {
 	    data[i] = neu;
 	}
     }
-    /*
-    public void bsort() {
-	for (int i = 0; */
 
+    public void bsort() {
+	for (int i = 0; i <last; i++) {
+	    int x = i;
+	    // index of that string
+	    String dats = data[i];
+	    while (dats.compareTo(data[x+1]) > 0 && x < last ) {
+		data[x] = data[x+1];
+		data[x+1] = dats;
+		x++;
+	    }
+	}  
+    }
 
 }
