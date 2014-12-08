@@ -91,6 +91,10 @@ public class Sarray {
 	}
     }
 
+    // n^2
+    // compare on different types of data
+    // set -> sorted, reversed, almost sorted, etc.
+
     public void ssort() {
 	for (int i = 0; i < last; i++) {
 	    int  min = i;
@@ -116,6 +120,20 @@ public class Sarray {
 		x++;
 	    }
 	}  
+    }
+
+    // finding min -> time it takes: n
+    // we do this n times
+    //therefore, takes n^2 times
+    //however, actually (n^2 + n)/2
+
+
+    public void builtin() {
+	/* this assumes the array is full (no null elements) if you want to
+	   sort only part of the array use:
+	   array.sort(data,start,stop) which will sort from start (inclusive)
+	   to stop (exclusive)
+	*/
     }
 
 }
