@@ -29,7 +29,7 @@ A class can only extend one class but it can implement as many interfaces as it 
 
 // f(compareTo())
 
-public class Interval{
+public class Interval implements Comparable{
     private int high,low;
     private static Random r = new Random();
     // if not static, then will take the same seed in paren and same number
@@ -65,13 +65,17 @@ public class Interval{
     }
 
 
-    public int compareTo(Interval other) {
-	
-	if (this.low == other.low) {
+    public int compareTo(Object other) {
+	// create a local variable and cast and assign the parameter
+	Interval o = (Interval)other;
+
+	/*	if (this.low == other.low) {
 	    return this.high-other.high;
 	} else {
 	    return this.low-other.low;
-	}
+	} */
+
+	return (this.high - this.low) - (o.high - o.low);
     }
 
     //static stuff
