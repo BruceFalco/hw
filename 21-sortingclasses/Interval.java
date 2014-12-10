@@ -32,6 +32,14 @@ public class Interval {
     }
 
 
+    public int compareTo(Interval other) {
+	if (this.low == other.low) {
+	    return this.high-other.high;
+	} else {
+	    return this.low-other.low;
+	}
+    }
+
     //static stuff
     public static void printStuff() {
 	System.out.println("Stuff");
@@ -56,13 +64,7 @@ public class Interval {
 	String nh1 = n1.toString();
 	System.out.println(nh1);
 	
-	Interval n2 = new Interval();
-	String nh2 = n2.toString();
-	System.out.println(nh2);
-	
-	Interval n3 = new Interval();
-	String nh3 = n3.toString();
-	System.out.println(nh3);
+	System.out.println(n.compareTo(n1));
 
 	printStuff();
 
