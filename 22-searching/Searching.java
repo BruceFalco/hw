@@ -1,16 +1,84 @@
 import java.util.*;
 
-public class Searching implements Comparable {
+public class Searching {
 
     String[] a;
 
     public Searching() {
-	a = new Searching(20);
+	a = new String[20];
     }
 
     public Searching(int b) {
-	a = new Searching(b);
+	a = new String[b];
     }
 
-    public void additem(String s) {
+    public void additem(String h, int i) {
+	if (i < a.length) {
+	    a[i] = h;
+	}
+    }
+
+    //    public int compareTo(
+
+    public String toString() {
+	String rtn = "{";
+	for (int i = 0; i < a.length; i++) {
+	    rtn = rtn + a[i];
+	    rtn = rtn + ", ";
+	}
+	rtn = rtn + "}";
+	return rtn;
+    }
+
+    public void sort() {
+	Arrays.sort(a);
+    }
+
+    public String lsearch(String it) {
+	for (int x = 0; x < a.length; x++) {
+	    if (a[x].equals(it)) {
+		return it;
+	    }  
+	}
+	return null;
+    }
+
+    public String bsearch(String it) {
+	int med = a.length/2;
+	if (a[med].equals(it)) {
+	    return it;
+	} else if (a[med].compareTo(it) > 0) {
+	    while (med > 0) {
+		if (a[med].equals(it)) {
+		    return it;
+		}
+		med-- ;
+	    }
+	} else {
+	    while (med < a.length) {
+		if (a[med].equals(it)) {
+		    return it;
+		}
+		med++;
+	    }
+	}
+	return null;
+    }
+
+    public static void main(String[] args) {
+        Searching s = new Searching(13);
+	String[] dit = {"hoici","ab","zeta","episilon","ngoi","harr","lann",
+			"nye","taksu","doota","eda","colum","hazen",
+	};
+	for (int i = 0; i < dit.length; i++) {
+	    s.additem(dit[i],i);
+	}
+	System.out.println(s.toString());
+	s.sort();
+	System.out.println(s.toString());
 	
+	System.out.println("is hoici found:" + s.bsearch("hoici"));
+	System.out.println("is notfound found:" +  s.bsearch("notfound"));
+
+    }
+}
