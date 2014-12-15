@@ -65,6 +65,28 @@ public class Searching {
 	return null;
     }
 
+    public String rbsearch(String it) {
+	int h,l;
+	h = a.length-1;
+	l = 0;
+	int med = a.length/2;
+	for (; h-l > 1; med = (h-l)/2 +l ) {
+	    if (a[med].equals(it)) {
+		return it;
+	    } else if (a[med].compareTo(it) > 0) {
+		h = med;
+	    } else {
+		l = med;
+	    }
+	    //	    med = (h-l)/2 + l;
+	}
+	if (a[med].equals(it)) {
+	    return it;
+	} else {
+	    return null;
+	}
+    }
+
     public static void main(String[] args) {
         Searching s = new Searching(13);
 	String[] dit = {"hoici","ab","zeta","episilon","ngoi","harr","lann",
@@ -77,8 +99,8 @@ public class Searching {
 	s.sort();
 	System.out.println(s.toString());
 	
-	System.out.println("is hoici found:" + s.bsearch("hoici"));
-	System.out.println("is notfound found:" +  s.bsearch("notfound"));
+	System.out.println("is hoici found:" + s.rbsearch("hoici"));
+	System.out.println("is notfound found:" +  s.rbsearch("notfound"));
 
     }
 }
