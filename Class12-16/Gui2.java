@@ -1,21 +1,34 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Gui1 extends JFrame {
-
-    private JButton b1,b2;
+public class Gui2 extends JFrame implements ActionListener {
+    
+    private JButton b1,b2,labeler;
     private Container pane;
     private JLabel label;
     private JTextArea text;
     private JPanel canvas;
 
-    public Gui1(){
-
+    private class Key implements KeyListener {
+	public void keyPressed(KeyEvent e) {
+	    System.out.println(" ");
+	}
+	public void keyReleased(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {}
+    }
+    
+    public void actionPerformed(ActionEvent e){
+	
+    }
+    
+    public Gui2(){
+	
 	setTitle("My First Gui");
 	setSize(600,600);
 	setLocation(100,100);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+	
 	pane = getContentPane();
 	//pane.setLayout(new GridLayout(3,3));
 	pane.setLayout(new FlowLayout());
@@ -23,41 +36,24 @@ public class Gui1 extends JFrame {
 	pane.add(b1);
 	b2 = new JButton("exit");
 	pane.add(b2);
-
+	
 	label = new JLabel("The Label:");
 	pane.add(label);
-
-
+	
 	text =new JTextArea();
 	text.setColumns(40);
 	text.setRows(5);
 	text.setBorder(BorderFactory.createLineBorder(Color.red,2));
 	pane.add(text);
-
-
+	
 	canvas = new JPanel();
-	canvas.setPreferredSize(new Dimension(100,100));
-	canvas.setBorder(BorderFactory.createLineBorder(Color.blue,1));
+	canvas.setPreferredSize(new Dimension(300,300));
+	canvas.setBorder(BorderFactory.createLineBorder(Color.blue,2));		
 	pane.add(canvas);
-
-
-
-	/*
-	  pane.add(new JButton("button 0"));
-	  JPanel buttongrid = new JPanel();
-	  buttongrid.setLayout(new GridLayout(3,3));
-	  buttongrid.add(new JButton("button 0"));
-	  buttongrid.add(new JButton("button 1"));
-	  buttongrid.add(new JButton("button 2"));
-	  buttongrid.add(new JButton("button 3"));
-	  buttongrid.add(new JButton("button 4"));
-	  pane.add(buttongrid);
-	*/
+	
     }
-
-
     public static void main(String[] args) {
-	Gui1 f = new Gui1();
+	Gui2 f = new Gui2();
 	f.setVisible(true);
     }
 }
